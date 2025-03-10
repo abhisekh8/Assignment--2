@@ -1,0 +1,76 @@
+//Write a program to create a Car class with the following member variables: model, 
+color, and speed. Implement the appropriate constructor and methods for this class.
+Additionally, create a driver class to:
+i. Instantiate two Car objects.
+ii. Compare the cars based on their speed.
+iii. Print the details of the car with the greater speed.
+Note: Implement the Comparable interface and override the compareTo() method.
+
+
+
+
+
+
+
+
+class Car implements Comparable<Car> {
+    private String model;
+    private String color;
+    private int speed;
+
+    
+    public Car(String model, String color, int speed) {
+        this.model = model;
+        this.color = color;
+        this.speed = speed;
+    }
+
+   
+    public String getModel() {
+        return model;
+    }
+
+    public String getColor() {
+        return color;
+    }
+
+    public int getSpeed() {
+        return speed;
+    }
+
+   
+    @Override
+    public String toString() {
+        return "Model: " + model + ", Color: " + color + ", Speed: " + speed + " km/h";
+    }
+
+   
+    @Override
+    public int compareTo(Car otherCar) {
+        return Integer.compare(this.speed, otherCar.speed);
+    }
+}
+
+
+public class Q3{
+    public static void main(String[] args) {
+       
+        Car car1 = new Car("MCCLAREN", "Red", 277);
+        Car car2 = new Car("Porsche 911", "Blue", 300);
+
+       
+        System.out.println("Car 1: " + car1);
+        System.out.println("Car 2: " + car2);
+
+       
+        if (car1.compareTo(car2) > 0) {
+            System.out.println("Car 1 has greater speed.");
+            System.out.println("Details: " + car1);
+        } else if (car1.compareTo(car2) < 0) {
+            System.out.println("Car 2 has greater speed.");
+            System.out.println("Details: " + car2);
+        } else {
+            System.out.println("Both cars have the same speed.");
+        }
+    }
+}
