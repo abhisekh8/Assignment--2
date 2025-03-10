@@ -1,0 +1,74 @@
+//Write a program to create a Book class with the following member variables: bookId, 
+bookName, and price. Implement the appropriate constructor and methods for this 
+class.
+Additionally, create a driver class to:
+i. Instantiate two Book objects.
+ii. Compare the books based on their price.
+iii. Print the details of both books.
+Note: Override the toString() and equals() methods
+
+
+
+CODE:-
+class Book {
+    private int bookId;
+    private String bookName;
+    private double price;
+
+    
+    public Book(int bookId, String bookName, double price) {
+        this.bookId = bookId;
+        this.bookName = bookName;
+        this.price = price;
+    }
+
+   
+    public int getBookId() {
+        return bookId;
+    }
+
+    public String getBookName() {
+        return bookName;
+    }
+
+    public double getPrice() {
+        return price;
+    }
+
+    
+    @Override
+    public String toString() {
+        return "Book ID: " + bookId + ", Book Name: " + bookName + ", Price: " + price;
+    }
+@Override
+public boolean equals(Object obj) {
+   if (this == obj) {
+        return true;
+    }
+    if (obj == null || getClass() != obj.getClass()) {
+        return false;
+    }
+    Book otherBook = (Book) obj;
+    return Double.compare(otherBook.price, this.price) == 0;
+}
+}
+
+
+public class Q2 {
+    public static void main(String[] args) {
+    
+        Book book1 = new Book(101, "Java", 450.50);
+        Book book2 = new Book(102, "webdevelopment", 450.50);
+
+       
+        System.out.println("Book 1 Details: " + book1);
+        System.out.println("Book 2 Details: " + book2);
+
+        
+        if (book1.equals(book2)) {
+            System.out.println("Both books have the same price.");
+        } else {
+            System.out.println("The books have different prices.");
+        }
+    }
+}
