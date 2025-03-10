@@ -1,0 +1,46 @@
+//Write a program to create a Student class with the following attributes: name, 
+rollNumber, and age. The rollNumber should be designed to accept both integers and 
+strings. Additionally, implement a driver class to create Student objects and invoke 
+relevant methods.
+
+
+
+
+
+class Student {
+    private String name;
+    private String rollNumber;
+    private int age;
+
+   
+    public Student(String name, int rollNumber, int age) {
+        this.name = name;
+        this.rollNumber =Integer.toString(rollNumber); 
+        this.age = age;
+    }
+
+   
+    public Student(String name, String rollNumber, int age) {
+        this.name = name;
+        this.rollNumber = rollNumber;
+        this.age = age;
+    }
+
+   
+    public void display() {
+        System.out.println("Name: " + name + ", Roll Number: " + rollNumber + ", Age: " + age);
+    }
+}
+
+
+public class driverclass {
+    public static void main(String[] args) {
+   
+        Student student1 = new Student("ABHI", 56, 20);
+        Student student2 = new Student("DK", "77", 20); 
+
+        
+        student1.display();
+        student2.display();
+    }
+}
