@@ -1,0 +1,54 @@
+//Write a program to create an Animal class with member variables name, color, and 
+type (indicating whether the animal is a pet or wild). Override the hashCode() method 
+to generate a unique identifier for each object. Then, create multiple Animal objects 
+and print their hash codes.
+
+
+
+
+class Animal {
+    private String name;
+    private String color;
+    private String type; // "pet" or "wild"
+
+ 
+    public Animal(String name, String color, String type) {
+        this.name = name;
+        this.color = color;
+        this.type = type;
+    }
+
+   
+    @Override
+    public int hashCode() {
+       
+        int result = 17;
+        result = 31 * result + name.hashCode();
+        result = 31 * result + color.hashCode();
+        result = 31 * result + type.hashCode();
+        return result;
+    }
+
+   
+    @Override
+    public String toString() {
+        return "Name: " + name + ", Color: " + color + ", Type: " + type;
+    }
+}
+
+
+public class Q6{
+    public static void main(String[] args) {
+       
+        Animal animal1 = new Animal("Dog", "Brown", "pet");
+        Animal animal2 = new Animal("Lion", "Yellow", "wild");
+        Animal animal3 = new Animal("Cat", "White", "pet");
+        Animal animal4 = new Animal("Tiger", "Orange", "wild");
+
+        
+        System.out.println(animal1 + "Hash Code: " + animal1.hashCode());
+        System.out.println(animal2 + "Hash Code: " + animal2.hashCode());
+        System.out.println(animal3 + "Hash Code: " + animal3.hashCode());
+        System.out.println(animal4 + "Hash Code: " + animal4.hashCode());
+    }
+}
