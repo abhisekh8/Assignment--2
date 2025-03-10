@@ -1,0 +1,85 @@
+//Write a program to create a Student class with member variables name, rollNumber, 
+and totalMark. The program should create an array of Student objects and sort them 
+using the Bubble Sort algorithm based on their roll numbers.
+Note: Implement the Comparable interface and override the compareTo() method for 
+comparison.
+
+
+
+
+
+
+
+class Student implements Comparable<Student> {
+    private String name;
+    private int rollNumber;
+    private double totalMark;
+
+    
+    public Student(String name, int rollNumber, double totalMark) {
+        this.name = name;
+        this.rollNumber = rollNumber;
+        this.totalMark = totalMark;
+    }
+
+   
+    public String getName() {
+        return name;
+    }
+
+    public int getRollNumber() {
+        return rollNumber;
+    }
+
+    public double getTotalMark() {
+        return totalMark;
+    }
+
+   
+    @Override
+    public String toString() {
+        return "Student{name='" + name + "', rollNumber=" + rollNumber + ", totalMark=" + totalMark + "}";
+    }
+
+    
+    @Override
+    public int compareTo(Student other) {
+        return Integer.compare(this.rollNumber, other.rollNumber);
+    }
+}
+
+
+public class Q5 {
+    
+    public static void bubbleSort(Student[] students) {
+        int n = students.length;
+        for (int i = 0; i < n - 1; i++) {
+            for (int j = 0; j < n - i - 1; j++) {
+                if (students[j].compareTo(students[j + 1]) > 0) {
+                    Student temp = students[j];
+                    students[j] = students[j + 1];
+                    students[j + 1] = temp;
+                }
+            }
+        }
+    }
+
+    public static void main(String[] args) {
+       Student[] students = {
+            new Student("A", 18, 85.5),
+            new Student("B", 12, 78.0),
+            new Student("C", 8, 92.3),
+            new Student("D", 55, 88.7),
+         
+        };
+        System.out.println("Before Sorting:");
+        for (Student student : students) {
+            System.out.println(student);
+        }
+        bubbleSort(students);
+        System.out.println("After Sorting by Roll Number:");
+        for (Student student : students) {
+            System.out.println(student);
+        }
+    }
+}
